@@ -3,7 +3,7 @@
     "description": "Preheating instances",
     "userPrompt": [
         {
-            "type": "checkbox",
+            "type": "confirm",
             "name": "http",
             "message": "需要预热的函数是否通过 Http 触发器触发？"        
         },
