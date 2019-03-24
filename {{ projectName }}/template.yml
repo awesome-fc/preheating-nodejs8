@@ -1,0 +1,21 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  {{ service }}:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'Preheating instances'
+    {{ projectName }}:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: nodejs8
+        CodeUri: 'index.js'
+        Initializer: 'index.initializer'
+      Events:
+        TmTrigger:
+          Type: Timer
+          Properties: 
+            Payload: "{\"preheatingNumber\": {{ preheatingNumber }}, \"targets\": { \"http\": {{ http }} \"serviceName\": \"{{ targetServiceName }}\", \"qualifier\": \"{{ targetQualifier }}\", \"functionName\": \"{{ targetFunctionName }}\" }}"
+            CronExpression: "@every 10m"
+            Enable: true
