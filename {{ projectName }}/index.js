@@ -41,8 +41,8 @@ module.exports.handler = async (event, context, callback) => {
         futures.push(future);
       } else {
         const event = target.event || {}
-        event.preheating = ture;
-        const future = client.invokeFunction(serviceName, functionName, event, { 'x-preheating': true }, qualifier );
+        event.preheating = true;
+        const future = client.invokeFunction(serviceName, functionName, JSON.stringify(event), { 'x-preheating': true }, qualifier );
         futures.push(future);
       }
     }

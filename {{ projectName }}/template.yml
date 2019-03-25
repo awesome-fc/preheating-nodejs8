@@ -16,6 +16,6 @@ Resources:
         TmTrigger:
           Type: Timer
           Properties: 
-            Payload: "{\"preheatingNumber\": {{ preheatingNumber }}, \"targets\": [{ \"http\": {{ http }}, \"serviceName\": \"{{ targetServiceName }}\", \"qualifier\": \"{{ targetQualifier }}\", \"functionName\": \"{{ targetFunctionName }}\" }]}"
+            Payload: '{{ JSON.stringify(event) }}'
             CronExpression: "@every 3m"
             Enable: true
