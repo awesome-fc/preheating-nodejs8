@@ -16,6 +16,6 @@ Resources:
         TmTrigger:
           Type: Timer
           Properties: 
-            Payload: "{\"preheatingNumber\": {{ preheatingNumber }}, \"targets\": { \"http\": {{ http }} \"serviceName\": \"{{ targetServiceName }}\", \"qualifier\": \"{{ targetQualifier }}\", \"functionName\": \"{{ targetFunctionName }}\" }}"
+            Payload: "{\"preheatingNumber\": {{ preheatingNumber }}, \"targets\": [{ \"http\": {{ http }}, \"serviceName\": \"{{ targetServiceName }}\", \"qualifier\": \"{{ targetQualifier }}\", \"functionName\": \"{{ targetFunctionName }}\" }]}"
             CronExpression: "@every 10m"
             Enable: true
